@@ -5,6 +5,11 @@ class UsersController < ApplicationController
     render json: { token: token, user: { id: user.id, email: user.email, name: user.name } }
   end
 
+  def show_user_entries
+    user_entries = User.find(params[:user_id]).entries #gets user's entries
+    render json: user_entries
+  end
+
   private
 
   def user_params
