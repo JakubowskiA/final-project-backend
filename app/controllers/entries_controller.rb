@@ -1,6 +1,6 @@
 class EntriesController < ApplicationController
   def show
-    entry = Entry.find_by(entry_params)
+    entry = Entry.find_by(user_id: params[:user_id], id: params[:id])
     if entry.nil?
       render json: {}
     else
@@ -22,6 +22,7 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:pre_level, :stressors, :evaluation, :action, :positivity, :post_level, :user_id)
+    params.require(:entry).permit(:pre_level, :stressors, :evaluation, :action, :positivity, :post_level)
+    # params.require(:entry).permit(:pre_level, :stressors, :evaluation, :action, :positivity, :post_level, :user_id)
   end
 end
