@@ -9,7 +9,7 @@ class EntriesController < ApplicationController
   end
 
   def create
-    new_entry = Entry.create(user_id: params[:user_id])
+    new_entry = Entry.create(entry_params)
     render json: new_entry
   end
 
@@ -22,7 +22,7 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:pre_level, :stressors, :evaluation, :action, :positivity, :post_level)
+    params.require(:entry).permit(:pre_level, :stressors, :evaluation, :action, :positivity, :post_level, :user_id)
     # params.require(:entry).permit(:pre_level, :stressors, :evaluation, :action, :positivity, :post_level, :user_id)
   end
 end
