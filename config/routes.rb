@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get "/users/:user_id/entries", to: "users#show_user_entries"
   # Creating, seeing, and destroying entries
   post "/entries", to: "entries#create"
-  get "/entries/:user_id/:id", to: "entries#show"
+  get "/entries/:user_id/entry", to: "entries#show"
   # get "/entries/:user_id/:entry_id", to: "entries#show"
   delete "/entries/:user_id/:entry_id", to: "entries#destroy"
 end
