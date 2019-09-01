@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   # Creating, seeing, and destroying entries
   post "/entries", to: "entries#create"
   get "/entries/:user_id/entry", to: "entries#show"
+  # Get stress levels
+  get "/users/:user_id/stress_levels", to: "entries#get_stress_level_data"
+  # get "/users/:user_id/stress_post_levels", to: "entries#get_stress_post_level_data"
+
   # get "/entries/:user_id/:entry_id", to: "entries#show"
   delete "/entries/:user_id/:entry_id", to: "entries#destroy"
 end
