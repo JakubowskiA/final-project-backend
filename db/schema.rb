@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_170010) do
+ActiveRecord::Schema.define(version: 2019_09_09_181542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id"
+    t.datetime "date"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
 
   create_table "entries", force: :cascade do |t|
     t.integer "pre_level"
@@ -22,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_170010) do
     t.text "action"
     t.text "positivity"
     t.integer "post_level"
-    t.int "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_entries_on_user_id"
@@ -36,5 +43,6 @@ ActiveRecord::Schema.define(version: 2019_08_26_170010) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "appointments", "users"
   add_foreign_key "entries", "users"
 end

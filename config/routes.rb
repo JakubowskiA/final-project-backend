@@ -15,4 +15,8 @@ Rails.application.routes.draw do
 
   # get "/entries/:user_id/:entry_id", to: "entries#show"
   delete "/entries/:user_id/:entry_id", to: "entries#destroy"
+
+  # Appointments
+  post "/appointments", to: "appointments#create"
+  get "/users/:user_id/appointment", to: "appointments#show"
 end
