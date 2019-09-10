@@ -15,7 +15,9 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
-    appointment = Appointment.find_by(user_id: params[:user_id], appointment_id: params[:appointment_id])
+    appointment_id = request.headers["Appointment-Id"].to_i
+    appointment = Appointment.find_by(id: appointment_id)
+    # byebug
     appointment.destroy
     render json: {}
   end

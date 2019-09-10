@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   # Appointments
   post "/appointments", to: "appointments#create"
   get "/users/:user_id/appointment", to: "appointments#show"
+  delete "/appointments/:user_id/:appointment_id", to: "appointments#destroy"
 end
