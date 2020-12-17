@@ -80,6 +80,5 @@ class EntriesController < ApplicationController
 
   def entry_params
     params.require(:entry).permit(:pre_level, :stressors, :evaluation, :action, :positivity, :post_level, :user_id)
-    # params.require(:entry).permit(:pre_level, :stressors, :evaluation, :action, :positivity, :post_level, :user_id)
   end
 end
