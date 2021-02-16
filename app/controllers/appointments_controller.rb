@@ -2,7 +2,6 @@ class AppointmentsController < ApplicationController
   def show
     user_id = request.headers["User-Id"]
     date = request.headers["Appointment-Date"].to_date()
-    # byebug
     user_appointments = Appointment.date(date).select do |appointment|
       appointment.user_id == params[:user_id].to_i
     end
@@ -17,7 +16,6 @@ class AppointmentsController < ApplicationController
   def destroy
     appointment_id = request.headers["Appointment-Id"].to_i
     appointment = Appointment.find_by(id: appointment_id)
-    # byebug
     appointment.destroy
     render json: {}
   end
